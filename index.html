@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0e0d09" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Facebook Pixel Code (ID provisto) -->
+  <!-- Facebook Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -31,47 +31,35 @@
       --anim:1.4s;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
     body{
       background:var(--bg); color:var(--text);
       font:400 16px/1.35 Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      display:grid; place-items:start stretch; min-height:100svh;
+      min-height:100svh;
     }
     .wrap{width:100%; max-width:900px; margin:0 auto; padding:0}
-
-    /* Todo Junto: imágenes apiladas sin espacios */
     .block{width:100%}
-    .block + .block{margin-top:0}
     img{display:block; width:100%; height:auto}
 
-    /* Botón WA: animamos la imagen (no el contenedor) */
     .wa-link{display:block; text-decoration:none; outline:0}
-    .wa-img{animation:pulse var(--anim) infinite ease-in-out; will-change:transform,filter;
-            filter:drop-shadow(0 0 6px rgba(37,211,102,.35)) drop-shadow(0 0 12px rgba(0,153,255,.22))}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+    .wa-img{display:block; width:100%; height:auto; animation:pulse var(--anim) infinite ease-in-out}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 
     footer{padding:12px 10px 20px;text-align:center;color:#8b8b8b;font-size:.9rem}
-
-    /* Móvil primero; en desktop sólo limitamos ancho para que se vea prolijo */
     @media (min-width:1024px){ .wrap{max-width:900px} }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <!-- IMG 1: OFERTA (reemplaza oferta.jpg por tu archivo real) -->
     <section class="block">
       <img src="oferta.jpg" alt="Oferta especial PUFF CLUB" loading="eager" />
     </section>
 
-    <!-- IMG 2: BOTÓN WHATSAPP (imagen animada con link) -->
-    <!-- Reemplaza btn-whatsapp.png por tu PNG real del botón -->
     <section class="block">
       <a id="waLink" class="wa-link" href="#">
         <img class="wa-img" src="btn-whatsapp.png" alt="Contactar por WhatsApp" />
       </a>
     </section>
 
-    <!-- IMG 3: EXTRA (tercera imagen que tengas) -->
     <section class="block">
       <img src="extra.jpg" alt="Información adicional" loading="lazy" />
     </section>
@@ -80,7 +68,6 @@
   </main>
 
   <script>
-    // Número en Base64: 5492617263841
     const encoded = "NTQ5MjYxNzI2Mzg0MQ==";
     const numero = atob(encoded);
     const msg = encodeURIComponent("Hola, quiero más información");
