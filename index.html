@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SELEKTA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Facebook Pixel Code (dejo tu ID tal cual) -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2828389667353907');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" alt=""
+         src="https://www.facebook.com/tr?id=2828389667353907&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --bg-dark: #0e0d09;
+      --text: #ffffff;
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --anim-speed: 1.6s;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height: 100svh;
+      display: grid;
+      place-items: start center;
+    }
+    .wrap { width: 100%; max-width: 720px; padding: 24px 16px 56px; }
+
+    /* Bloques de imagen */
+    .block { width: 100%; margin-bottom: 18px; }
+    .img-card {
+      background: #0b0a07;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .img-card img { display: block; width: 100%; height: auto; }
+
+    /* Botón WhatsApp: imagen animada y clickeable */
+    .wa-link { display: block; text-decoration: none; outline: 0; }
+    .wa-frame { position: relative; border-radius: var(--radius); background:#0b0a07; box-shadow: var(--shadow); padding: 12px; }
+    .wa-img {
+      display: block; width: 100%; height: auto; border-radius: calc(var(--radius) - 8px);
+      animation: pulse var(--anim-speed) infinite ease-in-out;
+      filter: drop-shadow(0 0 8px rgba(37, 211, 102, .35)) drop-shadow(0 0 18px rgba(0, 153, 255, .22));
+      will-change: transform, filter;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1);   filter: drop-shadow(0 0 8px rgba(37,211,102,.30)) drop-shadow(0 0 16px rgba(0,153,255,.18)); }
+      50%  { transform: scale(1.03); filter: drop-shadow(0 0 14px rgba(37,211,102,.50)) drop-shadow(0 0 26px rgba(0,153,255,.30)); }
+      100% { transform: scale(1);   filter: drop-shadow(0 0 8px rgba(37,211,102,.30)) drop-shadow(0 0 16px rgba(0,153,255,.18)); }
+    }
+    /* Respeto de accesibilidad para reducir movimiento */
+    @media (prefers-reduced-motion: reduce) { .wa-img { animation: none; } }
+
+    footer { margin-top: 24px; text-align: center; font-size: .9rem; color: #8b8b8b; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- Imagen 1: OFERTA (primero) -->
+    <!-- Reemplaza src="oferta.jpg" por tu archivo real -->
+    <section class="block img-card">
+      <img src="oferta.jpg" alt="Oferta especial SELEKTA" loading="eager" />
+    </section>
+
+    <!-- Imagen 2: BOTÓN WHATSAPP (animada y con link) -->
+    <!-- Reemplaza src="btn-whatsapp.png" por tu archivo real del botón -->
+    <section class="block wa-frame">
+      <a id="waLink" class="wa-link" href="#">
+        <img class="wa-img" src="btn-whatsapp.png" alt="Contacto por WhatsApp" />
+      </a>
+    </section>
+
+    <!-- Imagen 3: Extra (logo / info / garantías, lo que vos tengas) -->
+    <!-- Reemplaza src="extra.jpg" por tu tercer imagen real -->
+    <section class="block img-card">
+      <img src="extra.jpg" alt="Información adicional" loading="lazy" />
+    </section>
+
+    <footer>© 2025 SELEKTA • Todos los derechos reservados</footer>
+  </main>
+
+  <script>
+    // Número en Base64 (mismo que dejaste): 5492617263841
+    const encoded = "NTQ5MjYxNzI2Mzg0MQ==";
+    const numero = atob(encoded);
+    const mensaje = encodeURIComponent("Hola, quiero más información");
+    const enlaceWhatsApp = `https://wa.me/${numero}?text=${mensaje}`;
+
+    const wa = document.getElementById('waLink');
+    wa.href = enlaceWhatsApp;
+
+    wa.addEventListener('click', function(){
+      try { fbq('track', 'Subscribe'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
