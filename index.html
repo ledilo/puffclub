@@ -2,20 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SELEKTA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PUFF CLUB</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Oferta • Contacto por WhatsApp" />
+  <meta name="theme-color" content="#0e0d09" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Facebook Pixel Code (dejo tu ID tal cual) -->
+  <!-- Facebook Pixel Code (ID provisto) -->
   <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '2828389667353907');
     fbq('track', 'PageView');
   </script>
@@ -25,93 +25,71 @@
   </noscript>
 
   <style>
-    :root {
-      --gold: #d4af37;
-      --bg-dark: #0e0d09;
-      --text: #ffffff;
-      --radius: 20px;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --anim-speed: 1.6s;
+    :root{
+      --bg:#0e0d09;
+      --text:#fff;
+      --anim:1.4s;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text);
-      font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      min-height: 100svh;
-      display: grid;
-      place-items: start center;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:var(--bg); color:var(--text);
+      font:400 16px/1.35 Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      display:grid; place-items:start stretch; min-height:100svh;
     }
-    .wrap { width: 100%; max-width: 720px; padding: 24px 16px 56px; }
+    .wrap{width:100%; max-width:900px; margin:0 auto; padding:0}
 
-    /* Bloques de imagen */
-    .block { width: 100%; margin-bottom: 18px; }
-    .img-card {
-      background: #0b0a07;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .img-card img { display: block; width: 100%; height: auto; }
+    /* Todo Junto: imágenes apiladas sin espacios */
+    .block{width:100%}
+    .block + .block{margin-top:0}
+    img{display:block; width:100%; height:auto}
 
-    /* Botón WhatsApp: imagen animada y clickeable */
-    .wa-link { display: block; text-decoration: none; outline: 0; }
-    .wa-frame { position: relative; border-radius: var(--radius); background:#0b0a07; box-shadow: var(--shadow); padding: 12px; }
-    .wa-img {
-      display: block; width: 100%; height: auto; border-radius: calc(var(--radius) - 8px);
-      animation: pulse var(--anim-speed) infinite ease-in-out;
-      filter: drop-shadow(0 0 8px rgba(37, 211, 102, .35)) drop-shadow(0 0 18px rgba(0, 153, 255, .22));
-      will-change: transform, filter;
-    }
-    @keyframes pulse {
-      0%   { transform: scale(1);   filter: drop-shadow(0 0 8px rgba(37,211,102,.30)) drop-shadow(0 0 16px rgba(0,153,255,.18)); }
-      50%  { transform: scale(1.03); filter: drop-shadow(0 0 14px rgba(37,211,102,.50)) drop-shadow(0 0 26px rgba(0,153,255,.30)); }
-      100% { transform: scale(1);   filter: drop-shadow(0 0 8px rgba(37,211,102,.30)) drop-shadow(0 0 16px rgba(0,153,255,.18)); }
-    }
-    /* Respeto de accesibilidad para reducir movimiento */
-    @media (prefers-reduced-motion: reduce) { .wa-img { animation: none; } }
+    /* Botón WA: animamos la imagen (no el contenedor) */
+    .wa-link{display:block; text-decoration:none; outline:0}
+    .wa-img{animation:pulse var(--anim) infinite ease-in-out; will-change:transform,filter;
+            filter:drop-shadow(0 0 6px rgba(37,211,102,.35)) drop-shadow(0 0 12px rgba(0,153,255,.22))}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
 
-    footer { margin-top: 24px; text-align: center; font-size: .9rem; color: #8b8b8b; }
+    footer{padding:12px 10px 20px;text-align:center;color:#8b8b8b;font-size:.9rem}
+
+    /* Móvil primero; en desktop sólo limitamos ancho para que se vea prolijo */
+    @media (min-width:1024px){ .wrap{max-width:900px} }
   </style>
 </head>
 <body>
   <main class="wrap">
-
-    <!-- Imagen 1: OFERTA (primero) -->
-    <!-- Reemplaza src="oferta.jpg" por tu archivo real -->
-    <section class="block img-card">
-      <img src="oferta.jpg" alt="Oferta especial SELEKTA" loading="eager" />
+    <!-- IMG 1: OFERTA (reemplaza oferta.jpg por tu archivo real) -->
+    <section class="block">
+      <img src="oferta.jpg" alt="Oferta especial PUFF CLUB" loading="eager" />
     </section>
 
-    <!-- Imagen 2: BOTÓN WHATSAPP (animada y con link) -->
-    <!-- Reemplaza src="btn-whatsapp.png" por tu archivo real del botón -->
-    <section class="block wa-frame">
+    <!-- IMG 2: BOTÓN WHATSAPP (imagen animada con link) -->
+    <!-- Reemplaza btn-whatsapp.png por tu PNG real del botón -->
+    <section class="block">
       <a id="waLink" class="wa-link" href="#">
-        <img class="wa-img" src="btn-whatsapp.png" alt="Contacto por WhatsApp" />
+        <img class="wa-img" src="btn-whatsapp.png" alt="Contactar por WhatsApp" />
       </a>
     </section>
 
-    <!-- Imagen 3: Extra (logo / info / garantías, lo que vos tengas) -->
-    <!-- Reemplaza src="extra.jpg" por tu tercer imagen real -->
-    <section class="block img-card">
+    <!-- IMG 3: EXTRA (tercera imagen que tengas) -->
+    <section class="block">
       <img src="extra.jpg" alt="Información adicional" loading="lazy" />
     </section>
 
-    <footer>© 2025 SELEKTA • Todos los derechos reservados</footer>
+    <footer>© 2025 PUFF CLUB • Todos los derechos reservados</footer>
   </main>
 
   <script>
-    // Número en Base64 (mismo que dejaste): 5492617263841
+    // Número en Base64: 5492617263841
     const encoded = "NTQ5MjYxNzI2Mzg0MQ==";
     const numero = atob(encoded);
-    const mensaje = encodeURIComponent("Hola, quiero más información");
-    const enlaceWhatsApp = `https://wa.me/${numero}?text=${mensaje}`;
+    const msg = encodeURIComponent("Hola, quiero más información");
+    const waURL = `https://wa.me/${numero}?text=${msg}`;
 
     const wa = document.getElementById('waLink');
-    wa.href = enlaceWhatsApp;
-
+    wa.href = waURL;
     wa.addEventListener('click', function(){
-      try { fbq('track', 'Subscribe'); } catch (e) {}
+      try { fbq('track', 'Subscribe'); } catch(e){}
     });
   </script>
 </body>
